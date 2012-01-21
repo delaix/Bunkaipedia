@@ -2,10 +2,26 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
 
+gem 'sqlite3'
+
+gem 'gravatar_image_tag'
+gem 'will_paginate'
+
+gem 'sqlite3-ruby', :require => 'sqlite3'
+
+group :development do
+  gem 'rspec-rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'webrat'
+  gem 'factory_girl_rails'
+end
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required

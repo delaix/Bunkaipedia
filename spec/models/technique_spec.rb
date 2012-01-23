@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Technique do
   before(:each) do
-    @technique = Technique.create(:description => "front kick")
+    @kata = Factory.create(:kata)
+    @technique = @kata.techniques.create(:description => "front kick")
     @image = Factory(:image, :viewable => @technique)
   end
   
@@ -12,5 +13,9 @@ describe Technique do
   
   it "should have the correct image" do
     @technique.image.name.should == @image.name
+  end
+  
+  it "should reference it's owner kata" do
+    @technique.kata.should == @kata
   end
 end

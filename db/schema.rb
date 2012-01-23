@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123165325) do
+ActiveRecord::Schema.define(:version => 20120123191943) do
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -22,10 +22,17 @@ ActiveRecord::Schema.define(:version => 20120123165325) do
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "images", ["name"], :name => "index_images_on_name", :unique => true
+  add_index "images", ["name"], :name => "index_images_on_name"
+
+  create_table "kata", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "techniques", :force => true do |t|
     t.text     "description"
+    t.integer  "kata_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

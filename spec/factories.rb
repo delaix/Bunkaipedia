@@ -3,3 +3,12 @@ Factory.define :image do |image|
   image.extension "jpg"
   image.viewable_id 1
 end
+
+Factory.define :technique do |technique|
+  technique.description "Front kick"
+  technique.kata_id 1
+end
+
+Factory.define :kata do |kata|
+  kata.name "Test Kata"
+end

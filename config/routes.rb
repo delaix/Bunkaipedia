@@ -1,4 +1,7 @@
 Bunkaipedia::Application.routes.draw do
+
+  resources :katas, :only => [:index, :show]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

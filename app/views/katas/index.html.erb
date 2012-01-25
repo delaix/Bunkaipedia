@@ -1,0 +1,5 @@
+<ul>
+  <% @katas.each do |kata| %>
+    <li><%= link_to kata.name, kata_path(kata) %></li>
+  <% end %>
+</ul>

@@ -12,3 +12,8 @@ end
 Factory.define :kata do |kata|
   kata.name "Test Kata"
 end
+
+Factory.define :action do |action|
+  action.actor "defender"
+  action.description "opens up a can of whupa$$!"
+end

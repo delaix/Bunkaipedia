@@ -2,9 +2,17 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
+    make_users
     make_kata
   end
 end 
+
+
+def make_users
+  user = User.new(:email => "user@bunkaipedia.com", :password => "foobar", 
+    :password_confirmation => "foobar")
+  user.save
+end
 
 
 def make_kata

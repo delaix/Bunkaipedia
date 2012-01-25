@@ -1,6 +1,10 @@
 Bunkaipedia::Application.routes.draw do
 
+  devise_for :users
+
   resources :katas, :only => [:index, :show]
+  
+  root :to => 'katas#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

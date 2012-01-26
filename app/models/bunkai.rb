@@ -7,4 +7,6 @@ class Bunkai < ActiveRecord::Base
   has_and_belongs_to_many :techniques
   
   validates :title, :presence => true, :length => { :maximum => 80 }
+  validates :user_id, :presence => true
+  validates :kata_id, :presence => true
 end

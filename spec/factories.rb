@@ -11,6 +11,7 @@ end
 
 Factory.define :kata do |kata|
   kata.name "Test Kata"
+  kata.style_id 1
 end
 
 Factory.define :action do |action|
@@ -22,4 +23,8 @@ Factory.define :user do |user|
   user.email "karateka@bunkaipedia.com"
   user.password "karatedo"
   user.password_confirmation "karatedo"
+end
+
+Factory.define :style do |style|
+  style.name "Shobayashi ryu"
 end

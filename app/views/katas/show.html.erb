@@ -5,3 +5,10 @@
    <%= render @kata.techniques %>
   </tr>
 </table>
+<lu>
+  <% @kata.bunkais.each do |bunkai| %>
+    <li>
+      <%= link_to bunkai.title, bunkai_path(bunkai) %> 
+    </li>
+  <% end %>
+<lu>

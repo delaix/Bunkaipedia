@@ -3,6 +3,7 @@ Bunkaipedia::Application.routes.draw do
   devise_for :users
 
   resources :katas, :only => [:index, :show]
+  resources :bunkai, :only => [:show]
   
   root :to => 'katas#index'
   

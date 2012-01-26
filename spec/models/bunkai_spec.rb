@@ -28,8 +28,8 @@ describe Bunkai do
     bunkai = @user.bunkais.create(@attributes)
     technique_1 = Factory(:technique)
     technique_2 = Factory(:technique)
-    bunkai.technique_associations.create(:technique_id => technique_1.id)
-    bunkai.technique_associations.create(:technique_id => technique_2.id)
+    bunkai.techniques << technique_1
+    bunkai.techniques << technique_2
     bunkai.techniques.should == [technique_1, technique_2]
   end
 end

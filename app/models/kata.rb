@@ -4,4 +4,5 @@ class Kata < ActiveRecord::Base
   validates :name, :presence => true, :length => { :maximum => 64 }
 
   has_many :techniques
+  has_many :bunkai, :through => :kata_association
 end

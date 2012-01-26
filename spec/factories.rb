@@ -17,3 +17,9 @@ Factory.define :action do |action|
   action.actor "defender"
   action.description "opens up a can of whupa$$!"
 end
+
+Factory.define :user do |user|
+  user.email "karateka@bunkaipedia.com"
+  user.password "karatedo"
+  user.password_confirmation "karatedo"
+end

@@ -13,7 +13,7 @@ describe Bunkai do
   
   it "should refer to the correct kata" do
     bunkai = @user.bunkais.create(@attributes)
-    bunkai.create_kata_association(:kata_id => @kata)
+    bunkai.kata = @kata
     bunkai.kata.should == @kata
   end
   

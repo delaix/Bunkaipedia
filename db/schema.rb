@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126142328) do
+ActiveRecord::Schema.define(:version => 20120126150602) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120126142328) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "kata_id"
   end
 
   create_table "bunkais_techniques", :force => true do |t|
@@ -49,13 +50,6 @@ ActiveRecord::Schema.define(:version => 20120126142328) do
 
   create_table "kata", :force => true do |t|
     t.text     "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "kata_associations", :force => true do |t|
-    t.integer  "bunkai_id"
-    t.integer  "kata_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

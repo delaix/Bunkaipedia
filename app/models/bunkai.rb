@@ -1,9 +1,8 @@
 class Bunkai < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :title, :kata_id
 
   belongs_to :user
-  has_one :kata_association, :dependent => :destroy
-  has_one :kata, :through => :kata_association
+  belongs_to :kata
   has_many :actions
   has_and_belongs_to_many :techniques
   

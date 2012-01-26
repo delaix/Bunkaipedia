@@ -7,9 +7,20 @@ describe Bunkai do
     @attributes = {:title => "some fancy move" }
   end
   
+  it "should refer to the proper user" do
+    @user.bunkais.create(@attributes).user.should == @user
+  end
+  
   it "should refer to the correct kata" do
     bunkai = @user.bunkais.create(@attributes)
     bunkai.create_kata_association(:kata_id => @kata)
     bunkai.kata.should == @kata
+  end
+  
+  it "should have the expected actions" do
+    bunkai = @user.bunkais.create(@attributes)
+    action_1 = bunkai.actions.create(:actor => "attacker", :description => "punch to face")
+    action_2 = bunkai.actions.create(:actor => "defender", :description => "kick to groin") 
+    bunkai.actions.should == [action_1, action_2]
   end
 end

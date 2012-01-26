@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126150602) do
+ActiveRecord::Schema.define(:version => 20120126154015) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
@@ -52,7 +52,17 @@ ActiveRecord::Schema.define(:version => 20120126150602) do
     t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "style_id"
   end
+
+  create_table "styles", :force => true do |t|
+    t.string   "name"
+    t.integer  "kata_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "styles", ["name"], :name => "index_styles_on_name", :unique => true
 
   create_table "techniques", :force => true do |t|
     t.text     "description"

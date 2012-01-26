@@ -5,4 +5,5 @@ class Kata < ActiveRecord::Base
 
   has_many :techniques
   has_many :bunkais
+  belongs_to :style
 end

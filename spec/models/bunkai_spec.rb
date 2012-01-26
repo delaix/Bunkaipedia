@@ -23,4 +23,13 @@ describe Bunkai do
     action_2 = bunkai.actions.create(:actor => "defender", :description => "kick to groin") 
     bunkai.actions.should == [action_1, action_2]
   end
+  
+  it "should have the expected techniques" do
+    bunkai = @user.bunkais.create(@attributes)
+    technique_1 = Factory(:technique)
+    technique_2 = Factory(:technique)
+    bunkai.technique_associations.create(:technique_id => technique_1.id)
+    bunkai.technique_associations.create(:technique_id => technique_2.id)
+    bunkai.techniques.should == [technique_1, technique_2]
+  end
 end

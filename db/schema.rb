@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126024338) do
+ActiveRecord::Schema.define(:version => 20120126032310) do
 
   create_table "actions", :force => true do |t|
     t.text     "description"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20120126024338) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "technique_associations", :force => true do |t|
+    t.integer  "bunkai_id"
+    t.integer  "technique_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "technique_associations", ["bunkai_id"], :name => "index_technique_associations_on_bunkai_id"
+  add_index "technique_associations", ["technique_id"], :name => "index_technique_associations_on_technique_id"
 
   create_table "techniques", :force => true do |t|
     t.text     "description"

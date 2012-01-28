@@ -1,4 +1,4 @@
-class Action < ActiveRecord::Base
+class Maneuver < ActiveRecord::Base
   attr_accessible :actor, :description
   
   belongs_to :bunkai

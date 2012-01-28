@@ -13,8 +13,8 @@ describe Bunkai do
     Bunkai.new(@attributes).should respond_to(:techniques)
   end
   
-  it "should have actions" do
-    Bunkai.new(@attributes).should respond_to(:actions)
+  it "should have maneuvers" do
+    Bunkai.new(@attributes).should respond_to(:maneuvers)
   end
   
   it "should belong to a user" do
@@ -37,11 +37,11 @@ describe Bunkai do
       bunkai.kata.should == @kata
     end
     
-    it "should have the expected actions" do
+    it "should have the expected maneuvers" do
       bunkai = @user.bunkais.create(@attributes)
-      action_1 = bunkai.actions.create(:actor => "attacker", :description => "punch to the face")
-      action_2 = bunkai.actions.create(:actor => "defender", :description => "kick to the groin") 
-      bunkai.actions.should == [action_1, action_2]
+      action_1 = bunkai.maneuvers.create(:actor => "attacker", :description => "punch to the face")
+      action_2 = bunkai.maneuvers.create(:actor => "defender", :description => "kick to the groin") 
+      bunkai.maneuvers.should == [action_1, action_2]
     end
     
     it "should have the expected techniques" do

@@ -14,9 +14,9 @@ Factory.define :kata do |kata|
   kata.style_id 1
 end
 
-Factory.define :action do |action|
-  action.actor "defender"
-  action.description "opens up a can of whupa$$!"
+Factory.define :maneuver do |maneuver|
+  maneuver.actor "defender"
+  maneuver.description "opens up a can of whupa$$!"
 end
 
 Factory.define :user do |user|

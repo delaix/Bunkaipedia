@@ -4,7 +4,6 @@ class BunkaiController < ApplicationController
 
   def show
     @bunkai = Bunkai.find(params[:id])
-    @actions = @bunkai.actions
   end
 
  
@@ -33,8 +32,7 @@ class BunkaiController < ApplicationController
     if not technique_ids.empty?
       @bunkai.add_technique_ids technique_ids
     end
-    @actions = @bunkai.actions
-    render :show
+    render :edit
   end
 
 

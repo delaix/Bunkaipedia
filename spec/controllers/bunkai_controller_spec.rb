@@ -21,9 +21,9 @@ describe BunkaiController do
       response.should have_selector("span", :id => "bunkai")
     end
     
-    it "should include actions" do
-      attack = @bunkai.actions.create(:actor => "attacker", :description => "Punches to face.")
-      defense = @bunkai.actions.create(:actor => "defender",
+    it "should include maneuvers" do
+      attack = @bunkai.maneuvers.create(:actor => "attacker", :description => "Punches to face.")
+      defense = @bunkai.maneuvers.create(:actor => "defender",
         :description => "Blocks with a double block.")
       get :show, :id => @bunkai
       response.should have_selector("div.attacker", :content => attack.description)

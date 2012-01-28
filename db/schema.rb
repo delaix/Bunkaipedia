@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126154015) do
-
-  create_table "actions", :force => true do |t|
-    t.text     "description"
-    t.string   "actor"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "bunkai_id"
-  end
+ActiveRecord::Schema.define(:version => 20120128003618) do
 
   create_table "bunkais", :force => true do |t|
     t.string   "title"
@@ -53,6 +45,14 @@ ActiveRecord::Schema.define(:version => 20120126154015) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "style_id"
+  end
+
+  create_table "maneuvers", :force => true do |t|
+    t.text     "description"
+    t.string   "actor"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "bunkai_id"
   end
 
   create_table "styles", :force => true do |t|

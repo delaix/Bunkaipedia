@@ -9,4 +9,9 @@ class Bunkai < ActiveRecord::Base
   validates :title, :presence => true, :length => { :maximum => 80 }
   validates :user_id, :presence => true
   validates :kata_id, :presence => true
+  
+  # Add techniques to this bunkai specified as separate arguments or as an array of indices.
+  def add_technique_ids(*ids)
+    self.technique_ids = (self.technique_ids + ids)
+  end
 end

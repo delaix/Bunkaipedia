@@ -1,0 +1,20 @@
+<span id="create_bunkai">
+  <h2>Select techniques from <%= @kata.name %></h2>
+  <span class="techniques">
+    <%= form_for(@bunkai, :url => bunkai_path) do |form| %>
+      <%= hidden_field_tag(:kata_id, @kata.id) %>
+      <% @kata.techniques.each do |technique| %>
+        <span>
+          <div>
+            <%= render technique %>
+          </div>
+          <div>
+            <%= check_box_tag "technique_#{technique.id}", technique.id %>
+          </div>
+        </span>
+      <% end %>
+      <%= text_field_tag :title %>
+      <%= form.submit 'Create' %>
+    <% end %>
+  </span>
+</span>

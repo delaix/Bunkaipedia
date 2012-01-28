@@ -30,4 +30,53 @@ describe BunkaiController do
       response.should have_selector("div.defender", :content => defense.description)
     end
   end
+  
+  describe "GET 'new'" do
+    describe "while not signed" do
+      it "should redirect to the sign-in page" do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe "while signed in" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        sign_in @user
+      end
+      
+      it "should succede with a valid request" do
+        get :new, :kata_id => @kata.id
+        response.should be_success
+      end
+      
+      it "should render the 'new' page" do
+        get :new, :kata_id => @kata.id
+        response.should render_template('new')
+      end
+    end
+  end
+  
+  describe "POST 'create'" do
+    describe "while not signed" do
+      it "should redirect to the sign-in page" do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+
+    describe "while signed in" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        sign_in @user
+      end
+      
+      it "should render the edit page on success" do
+        post :create, :kata_id => @kata.id, :title => "test"
+        response.should render_template('edit')
+      end
+    end
+  end
 end

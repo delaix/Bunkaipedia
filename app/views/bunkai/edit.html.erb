@@ -1,0 +1,18 @@
+<span id="bunkai">
+  <h2><%= @bunkai.title %></h2>
+  <span class="techniques">
+    <%= render @bunkai.techniques %>
+  </span>
+  <span class="actions">
+    <% @bunkai.actions.each do |action| %>
+      <%= form_for(action) do |form| %>
+        <%= form.text_area :description, :size => "80x6" %>
+        <%= form.radio_button :actor, "attacker" %>
+        <%= form.label :attacker %>
+        <%= form.radio_button :actor, "defender" %>
+        <%= form.label :defender %>
+        <%= form.submit 'Update' %>
+      <% end %>
+    <% end %>
+  </span>
+</span>

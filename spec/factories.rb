@@ -28,3 +28,7 @@ end
 Factory.define :style do |style|
   style.name "Shobayashi ryu"
 end
+
+Factory.sequence :email do |n|
+  "user-#{n}@bunkaipedia.com"
+end

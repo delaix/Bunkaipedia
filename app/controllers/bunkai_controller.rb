@@ -32,6 +32,7 @@ class BunkaiController < ApplicationController
     if not technique_ids.empty?
       @bunkai.add_technique_ids technique_ids
     end
+    @new_maneuver = Maneuver.new()
     render :edit
   end
 
@@ -39,5 +40,6 @@ class BunkaiController < ApplicationController
   def edit
     @bunkai = Bunkai.find(params[:id])
     redirect_to :show, @bunkai.id if @bunkai.user != current_user #TODO Show errors.
+    @new_maneuver = Maneuver.new()
   end
 end

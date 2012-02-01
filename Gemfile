@@ -11,6 +11,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'devise'
 
+gem "paperclip", "~> 2.0"
+
 group :development do
   gem 'rspec-rails'
   gem 'faker'

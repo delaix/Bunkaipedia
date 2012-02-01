@@ -1,3 +1,6 @@
 <div class=<%= maneuver.actor %>>
   <%= maneuver.description %>
+  <%if maneuver.image.file? %>
+    <%= image_tag maneuver.image.url(:small) %>
+  <% end %>
 </div>

@@ -5,9 +5,13 @@
   </span>
   <span class="maneuvers">
     <% @bunkai.maneuvers.each do |maneuver| %>
-      <%= form_for(maneuver) do |form| %>
+      <%= form_for maneuver, :html => { :multipart => true } do |form| %>
         <%= render 'shared/error_messages', :object => form.object %>
         <%= form.text_area :description, :size => "80x6" %>
+        <%if maneuver.image.file? %>
+          <%= image_tag maneuver.image.url(:small) %>
+          <%= form.file_field :image %>
+        <% end %>
         <%= form.radio_button :actor, "attacker" %>
         <%= form.label :attacker %>
         <%= form.radio_button :actor, "defender" %>
@@ -18,7 +22,7 @@
       <% end %>
     <% end %>
     <hr />
-    <%= form_for(@new_maneuver) do |form| %>
+    <%= form_for @new_maneuver, :html => { :multipart => true } do |form| %>
       <%= hidden_field_tag(:bunkai_id, @bunkai.id) %>
       <%= render 'shared/error_messages', :object => form.object %>
       <%= form.text_area :description, :size => "80x6" %>
@@ -26,7 +30,10 @@
       <%= form.label :attacker %>
       <%= form.radio_button :actor, "defender" %>
       <%= form.label :defender %>
+      <%= form.file_field :image %>
+      <%= form.label :image %>
       <%= form.submit 'Add' %>
     <% end %>
   </span>
+  <%= link_to "Done", @bunkai %>
 </span>

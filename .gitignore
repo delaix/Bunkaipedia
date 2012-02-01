@@ -16,3 +16,6 @@
 
 # Ignore bundled assets
 /public/assets/
+
+# Ignore 'uploaded' images
+/public/system/

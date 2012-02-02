@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Technique do
   before(:each) do
-    @attributes = { :description => "Front kick" }
+    @attributes = { :description => "Front kick", 
+      :image => File.new("#{Rails.root}/spec/fixtures/images/test.png") }
   end
   
   it "should have an image" do
@@ -27,9 +28,8 @@ describe Technique do
       @technique.kata.should == @kata
     end
     
-    it "should have the correct image" do
-      image = Factory.create(:image, :viewable => @technique)
-      @technique.image.should == image
+    it "should have the an image" do
+      @technique.should have_attached_file(:image)
     end
 
     it "should validate its description" do

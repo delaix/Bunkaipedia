@@ -7,6 +7,7 @@ end
 Factory.define :technique do |technique|
   technique.description "Front kick"
   technique.kata_id 1
+  technique.image File.new("#{Rails.root}/spec/fixtures/images/test.png")
 end
 
 Factory.define :kata do |kata|

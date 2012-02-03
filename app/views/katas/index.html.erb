@@ -2,4 +2,7 @@
   <% @katas.each do |kata| %>
     <li><%= link_to kata.name, kata_path(kata) %></li>
   <% end %>
+  <% if user_signed_in? and @style_id then %>
+    <%= link_to 'New', new_kata_path(:style_id => @style_id) %>
+  <% end %>
 </ul>

@@ -34,21 +34,21 @@ class ManeuversController < ApplicationController
   end
 
 
-  private
-    def permitted_bunkai_user(bunkai)
-      if current_user == bunkai.user
-        true
-      else
-        flash[:error] = "Permission denied."
-        redirect_to bunkai_path(bunkai)
-        false
-      end
+private
+  def permitted_bunkai_user(bunkai)
+    if current_user == bunkai.user
+      true
+    else
+      flash[:error] = "Permission denied."
+      redirect_to bunkai_path(bunkai)
+      false
     end
-    
-    
-    def render_bunkai_edit(bunkai, maneuver = Maneuver.new)
-      @bunkai = bunkai
-      @new_maneuver = maneuver
-      render "bunkai/edit"
-    end
+  end
+  
+  
+  def render_bunkai_edit(bunkai, maneuver = Maneuver.new)
+    @bunkai = bunkai
+    @new_maneuver = maneuver
+    render "bunkai/edit"
+  end
 end

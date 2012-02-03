@@ -6,7 +6,8 @@
   </tr>
 </table>
 <% if user_signed_in? then %>
-  <%= link_to 'New bunkai', "#{new_bunkai_path}?kata_id=#{@kata.id}&" %>
+  <%= link_to 'Edit', edit_kata_path(@kata) %>
+  <%= link_to 'New bunkai', new_bunkai_path(:kata_id => @kata.id) %>
 <% end %>
 <lu>
   <% @kata.bunkais.each do |bunkai| %>

@@ -1,0 +1,9 @@
+<span id="new_kata">
+  <h2>Create a new Kata</h2>
+   <%= form_for @kata, :url => kata_path do |form| %>
+    <%= form.hidden_field :style_id %>
+    <%= form.label :name %>  
+    <%= form.text_field :name %>
+    <%= form.submit 'Create' %>
+  <% end %>
+</span>

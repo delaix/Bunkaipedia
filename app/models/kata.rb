@@ -1,5 +1,5 @@
 class Kata < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :style_id
 
   has_many :techniques, :dependent => :destroy
   has_many :bunkais, :dependent => :destroy

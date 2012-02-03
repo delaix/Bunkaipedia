@@ -1,5 +1,5 @@
 class Technique < ActiveRecord::Base
-  attr_accessible :description, :image
+  attr_accessible :description, :image, :kata_id
 
   has_attached_file :image, 
     :styles => { :small => "144x144>", :large => "720x720>" }

@@ -28,6 +28,10 @@ describe Technique do
       @technique.kata.should == @kata
     end
     
+    it "should require an image" do
+       @kata.techniques.build(@attributes.merge(:image => nil)).should_not be_valid
+    end
+    
     it "should have the an image" do
       @technique.should have_attached_file(:image)
     end

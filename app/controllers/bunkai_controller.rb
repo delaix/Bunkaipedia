@@ -30,7 +30,7 @@ class BunkaiController < ApplicationController
       end
     end
     if not technique_ids.empty?
-      @bunkai.add_technique_ids technique_ids
+      @bunkai.add_technique_ids *technique_ids
     end
     @new_maneuver = Maneuver.new()
     render :edit

@@ -9,16 +9,21 @@
 <body>
   <div class='container'>
     <header>
-      <nav class="round">
-        <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-        <% end %>
-      </nav>
+      <div class="round" style="background:white">
+        <%= render 'layouts/logo' %>
+        <nav class="round">
+          <%= link_to 'Home', root_path %>
+          <% if user_signed_in? %>
+            <%= link_to 'Account', edit_user_registration_path %>
+            <!-- Signed in as <%= current_user.email %>. Not you? -->
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+        </nav>
+      </div>
     </header>
-    <section>
+    <section class="round">
 		  <% flash.each do |key, value| %>
 		    <div class="flash <%= key %>"><%= value %></div>
 		  <% end %>

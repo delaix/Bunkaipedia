@@ -1,9 +1,16 @@
 <span id="bunkai">
   <h2><%= @bunkai.title %></h2>
   <span class="techniques">
-    <%= render @bunkai.techniques %>
+    <ul class="flat">
+      <%= render @bunkai.techniques %>
+    </ul>
   </span>
   <span class="maneuvers">
     <%= render @bunkai.maneuvers %>
   </span>
+  <% if current_user == @bunkai.user %>
+  <nav>
+    <%= link_to "Edit", edit_bunkai_path(@bunkai), :style => "padding-bottom: 0px;"%>
+  </nav>
+  <% end %>
 </span>

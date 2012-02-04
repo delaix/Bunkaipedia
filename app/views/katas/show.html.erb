@@ -1,17 +1,21 @@
-<h1> Kata </h1>
-<%= @kata.name %>
-<table>
-  <tr>
-   <%= render @kata.techniques %>
-  </tr>
-</table>
+<h1> Kata <%= @kata.name %></h1>
 <% if user_signed_in? then %>
   <%= link_to 'Edit', edit_kata_path(@kata) %>
-  <%= link_to 'New bunkai', new_bunkai_path(:kata_id => @kata.id) %>
 <% end %>
-<lu>
+<ul class="flat">
+  <%= render @kata.techniques %>
+</ul>
+<h3>Bunkai
+  <nav>
+    <% if user_signed_in? then %>
+      <%= link_to '+', new_bunkai_path(:kata_id => @kata.id), :class => "buttonlike" %>
+    <% end %>
+  </nav>
+</h3>
+<lu class="bunkai">
   <% @kata.bunkais.each do |bunkai| %>
-    <li>
+    <li class="round">
+      <%= gravatar_for bunkai.user, :size => 30 %>
       <%= link_to bunkai.title, bunkai_path(bunkai) %> 
     </li>
   <% end %>

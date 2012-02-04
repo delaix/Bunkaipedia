@@ -2,22 +2,29 @@
 <html>
 <head>
   <title>Bunkaipedia</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-</div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-<%= debug(params) if Rails.env.development? %>
+  <div class='container'>
+    <header>
+      <nav class="round">
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+        <% end %>
+      </nav>
+    </header>
+    <section>
+		  <% flash.each do |key, value| %>
+		    <div class="flash <%= key %>"><%= value %></div>
+		  <% end %>
+      <%= yield %>
+    </section>
+    <%= debug(params) if Rails.env.development? %>
+  </container>
 </body>
 </html>

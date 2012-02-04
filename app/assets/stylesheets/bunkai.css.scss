@@ -1,3 +1,76 @@
 // Place all the styles related to the Bunkai controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.techniques .flat li input[type="checkbox"]{
+  margin-left: -1em;
+}
+
+.dropcap {
+	float: left;
+	font-size: xx-large;
+	line-height: .8em;
+	margin-right: 3px;
+	padding: 5px;
+}
+
+.attacker .dropcap {
+  background: #3F3F3F;
+  color: white;
+}
+
+
+.defender .dropcap {
+  background: #D1D1D1;
+}
+
+.maneuver {
+  margin-top: 0em;
+  margin-bottom: 1em;
+  padding-top: 0em;
+  padding-bottom:0em;
+  background: #EBEBEB;
+}
+
+.maneuver img {
+  float: right;
+}
+
+.maneuvers .delete {
+  float: right;
+}
+
+.maneuvers input[type="submit"] {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.maneuvers .existing {
+  background: #EBEBEB;
+  margin-bottom: 1em;
+  padding: 5px;
+}
+
+.maneuvers .new {
+  margin-top: 1em;
+  padding: 5px;
+  border: black solid 1px;
+}
+
+.maneuvers textarea {
+  width: auto;
+  height:auto;
+}
+
+.maneuvers input[type="file"] {
+  width: 20em
+}
+
+.maneuvers * {
+  vertical-align: bottom;
+}
+
+.maneuvers textarea {
+  vertical-align: top;
+}

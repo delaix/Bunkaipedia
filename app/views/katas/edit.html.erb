@@ -1,4 +1,4 @@
-<span id="edit_kata">
+<div id="edit_kata" class="edit_kata">
   <h2>Edit <%= @kata.name %></h2>
    <%= form_for @kata, :url => kata_path do |form| %>
     <%= render 'shared/error_messages', :object => form.object %>
@@ -6,29 +6,36 @@
     <%= form.text_field :name %>
     <%= form.submit 'Update' %>
   <% end %>
-  <span>
-    <% @kata.techniques.each do |technique| %>
+  <% @kata.techniques.each do |technique| %>
+    <div class="existing round">
       <%= form_for technique, :html => { :multipart => true } do |form| %>
+        <span class="delete">
+          <%= link_to "x", technique_path(technique), :method => :delete, 
+            :confirm => "Are you sure?", :title => "Delete technique", :class => "buttonlike" %>
+        </span>
         <%= render 'shared/error_messages', :object => form.object %>
-        <%= form.hidden_field :kata_id %>
-        <%= form.text_field :description %>
+        <%= form.text_field :description, :size => "17" %><br/>
         <%if technique.image.file? %>
           <%= image_tag technique.image.url(:small) %>
           <%= form.file_field :image %>
         <% end %>
-        <%= form.submit 'Update' %>
-        <%= link_to "delete", technique_path(technique), :method => :delete, 
-          :confirm => "Are you sure?", :title => "Delete maneuver" %>
-      <% end %>
-    <% end %>
-    <hr />
-      <%= form_for @new_technique, :html => { :multipart => true } do |form| %>
-        <%= render 'shared/error_messages', :object => form.object %>
         <%= form.hidden_field :kata_id %>
-        <%= form.text_field :description %>
-        <%= form.file_field :image %>
-        <%= form.submit 'Create' %>
+        <br/>
+        <%= form.submit 'Update' %>
+        <div style="clear: both;"></div> 
       <% end %>
-  </span>
+    </div>
+  <% end %>
+  <div class="new round">
+    <%= form_for @new_technique, :html => { :multipart => true } do |form| %>
+      <%= render 'shared/error_messages', :object => form.object %>
+      <%= form.hidden_field :kata_id %>
+      <%= form.text_field :description, :size => 17 %>
+      <%= form.file_field :image %>
+      <br/>
+      <%= form.submit 'Create' %>
+      <div style="clear: both;"></div>
+    <% end %>
+  </div>
   <%= link_to "Done", kata_path(@kata) %>
-</span>
+</div>

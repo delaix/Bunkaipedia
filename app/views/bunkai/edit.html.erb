@@ -1,39 +1,54 @@
 <span id="bunkai">
   <h2><%= @bunkai.title %></h2>
   <span class="techniques">
-    <%= render @bunkai.techniques %>
+    <ul class="flat">
+      <%= render @bunkai.techniques %>
+    </ul>
   </span>
   <span class="maneuvers">
     <% @bunkai.maneuvers.each do |maneuver| %>
-      <%= form_for maneuver, :html => { :multipart => true } do |form| %>
-        <%= render 'shared/error_messages', :object => form.object %>
-        <%= form.text_area :description, :size => "80x6" %>
-        <%if maneuver.image.file? %>
-          <%= image_tag maneuver.image.url(:small) %>
+      <div class="existing">
+        <%= form_for maneuver, :html => { :multipart => true } do |form| %>
+          <span class="delete">
+            <%= link_to "x", maneuver_path(maneuver), :method => :delete, 
+              :confirm => "Are you sure?", :title => "Delete maneuver", :class => "buttonlike" %>
+          </span>
+          <%= render 'shared/error_messages', :object => form.object %>
+          <%= form.text_area :description, :rows => "5" %>
+          <%if maneuver.image.file? %>
+            <%= image_tag maneuver.image.url(:small) %>
+          <% else %>
+            <%= form.label :image, "Add image" %>
+          <% end %>
           <%= form.file_field :image %>
+          <br />
+          <%= form.label :actor, "Actor:" %>
+          <%= form.radio_button :actor, "attacker" %>
+          <%= form.label :attacker %>
+          <%= form.radio_button :actor, "defender" %>
+          <%= form.label :defender %>
+          <br />
+          <%= form.submit 'Update' %>
         <% end %>
+      </div>
+    <% end %>
+    <div class="new round">
+      <%= form_for @new_maneuver, :html => { :multipart => true } do |form| %>
+        <%= hidden_field_tag(:bunkai_id, @bunkai.id) %>
+        <%= render 'shared/error_messages', :object => form.object %>
+        <%= form.text_area :description, :rows => "5" %>
+        <%= form.label :image, "Add image" %>
+        <%= form.file_field :image %>
+        <br />
+        <%= form.label :actor, "Actor:" %>
         <%= form.radio_button :actor, "attacker" %>
         <%= form.label :attacker %>
         <%= form.radio_button :actor, "defender" %>
         <%= form.label :defender %>
-        <%= form.submit 'Update' %>
-        <%= link_to "delete", maneuver_path(maneuver), :method => :delete, 
-          :confirm => "Are you sure?", :title => "Delete maneuver" %>
+        <br />
+        <%= form.submit 'Add' %>
       <% end %>
-    <% end %>
-    <hr />
-    <%= form_for @new_maneuver, :html => { :multipart => true } do |form| %>
-      <%= hidden_field_tag(:bunkai_id, @bunkai.id) %>
-      <%= render 'shared/error_messages', :object => form.object %>
-      <%= form.text_area :description, :size => "80x6" %>
-      <%= form.radio_button :actor, "attacker" %>
-      <%= form.label :attacker %>
-      <%= form.radio_button :actor, "defender" %>
-      <%= form.label :defender %>
-      <%= form.file_field :image %>
-      <%= form.label :image %>
-      <%= form.submit 'Add' %>
-    <% end %>
+    </div>
   </span>
   <%= link_to "Done", @bunkai %>
 </span>

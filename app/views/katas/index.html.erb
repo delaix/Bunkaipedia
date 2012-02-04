@@ -1,8 +1,13 @@
-<ul>
-  <% @katas.each do |kata| %>
-    <li><%= link_to kata.name, kata_path(kata) %></li>
-  <% end %>
+<div class="katas">
+  <h2>Katas</h2>
+  <ul class="flat">
+    <% @katas.each do |kata| %>
+      <li><%= link_to kata.name, kata_path(kata) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="round">
   <% if user_signed_in? and @style_id then %>
-    <%= link_to 'New', new_kata_path(:style_id => @style_id) %>
+    <%= link_to '+', new_kata_path(:style_id => @style_id), :class => "buttonlike round"%>
   <% end %>
-</ul>
+</div>

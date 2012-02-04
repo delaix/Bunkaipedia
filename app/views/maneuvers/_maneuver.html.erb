@@ -1,6 +1,8 @@
-<div class=<%= maneuver.actor %>>
-  <%= maneuver.description %>
+<div class="<%= "maneuver #{maneuver.actor} round" %>">
+  <span class="dropcap round"><%= maneuver.actor.upcase[0] %></span>
   <%if maneuver.image.file? %>
     <%= image_tag maneuver.image.url(:small) %>
   <% end %>
+  <%= maneuver.description %>
+  <div style="clear: both;"></div>
 </div>

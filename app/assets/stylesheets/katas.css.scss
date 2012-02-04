@@ -1,3 +1,33 @@
 // Place all the styles related to the Katas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 {
+  text-align: center;
+}
+
+.bunkai li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+  background: #EBEBEB; 
+}
+
+.edit_kata .existing {
+  background: #EBEBEB;
+  margin-bottom: 1em;
+  padding: 5px;
+}
+
+.edit_kata .new {
+  margin-top: 1em;
+  padding: 5px;
+  border: black solid 1px;
+}
+
+
+.edit_kata .delete {
+  float: right;
+}

@@ -3,16 +3,14 @@
   <span class="techniques">
     <%= form_for(@bunkai, :url => bunkai_path) do |form| %>
       <%= hidden_field_tag(:kata_id, @kata.id) %>
-      <% @kata.techniques.each do |technique| %>
-        <span>
-          <div>
-            <%= render technique %>
-          </div>
-          <div>
-            <%= check_box_tag "technique_#{technique.id}", technique.id %>
-          </div>
-        </span>
-      <% end %>
+        <ul class="flat">
+          <% @kata.techniques.each do |technique| %>
+            <li>
+              <%= image_tag technique.image.url(:small), :alt => technique.description%>
+              <%= check_box_tag "technique_#{technique.id}", technique.id %>
+            </li>
+          <% end %>
+        </ul>
       <%= text_field_tag :title %>
       <%= form.submit 'Create' %>
     <% end %>

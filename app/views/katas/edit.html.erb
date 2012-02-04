@@ -1,3 +1,4 @@
+<%= render 'shared/breadcrumb', :object => @kata %>
 <div id="edit_kata" class="edit_kata">
   <h2>Edit <%= @kata.name %></h2>
    <%= form_for @kata, :url => kata_path do |form| %>

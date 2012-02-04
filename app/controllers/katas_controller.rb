@@ -4,8 +4,8 @@ class KatasController < ApplicationController
 
   def index
     if params[:style_id]
-      @style_id = params[:style_id]
-      @katas = Style.find(params[:style_id]).katas
+      @style = Style.find(params[:style_id])
+      @katas = @style.katas
     else
       @katas = Kata.all
     end

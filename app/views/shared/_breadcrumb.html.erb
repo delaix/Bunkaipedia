@@ -1,0 +1,12 @@
+<div>
+  <% breadcrumbs = breadcrumb(object, []) %>
+  <% if not breadcrumbs.empty? %>
+    <ul class="breadcrumb">
+      <li><%= link_to 'Styles', styles_path %></li>
+      <% breadcrumbs.each do |name, link| %>
+        <li>&rarr;</li>
+        <li><%= link_to name, link %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,3 +1,4 @@
+<%= render 'shared/breadcrumb', :object => @kata %>
 <h1> Kata <%= @kata.name %></h1>
 <% if user_signed_in? then %>
   <%= link_to 'Edit', edit_kata_path(@kata) %>

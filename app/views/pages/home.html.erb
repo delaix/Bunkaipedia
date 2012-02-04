@@ -1,5 +1,11 @@
+<h1 style="text-align: center">Welcome to the Bunkaipedia</h1>
+<p>
+  This is an interactive site dedicated to the study of kata in the martial arts.  
+</p>
+<p>
+  See the kata for:
+</p>
  <div class="styles">
-   <h2>Budo Styles</h2>
    <ul class="flat">
      <% @styles.each do |style| %>
        <li><%= link_to style.name, katas_path(:style_id => style.id) %></li>

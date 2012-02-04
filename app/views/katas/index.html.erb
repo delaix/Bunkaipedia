@@ -1,5 +1,12 @@
+<% if @style %>
+  <%= render 'shared/breadcrumb', :object => @style %>
+<% end %>
 <div class="katas">
-  <h2>Katas</h2>
+  <% if @style%>
+    <h2><%= @style.name %> Katas</h2>
+  <% else %>
+    <h2>Katas</h2>
+  <% end %>
   <ul class="flat">
     <% @katas.each do |kata| %>
       <li><%= link_to kata.name, kata_path(kata) %></li>
@@ -7,7 +14,7 @@
   </ul>
 </div>
 <div class="round">
-  <% if user_signed_in? and @style_id then %>
-    <%= link_to '+', new_kata_path(:style_id => @style_id), :class => "buttonlike round"%>
+  <% if user_signed_in? and @style then %>
+    <%= link_to '+', new_kata_path(:style_id => @style.id), :class => "buttonlike round"%>
   <% end %>
 </div>

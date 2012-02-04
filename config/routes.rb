@@ -8,7 +8,9 @@ Bunkaipedia::Application.routes.draw do
   resources :styles, :only => [:index]
   resources :techniques, :only => [:create, :update, :destroy]
   
-  root :to => 'styles#index'
+  get "pages/home"
+  
+  root :to => 'pages#home'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

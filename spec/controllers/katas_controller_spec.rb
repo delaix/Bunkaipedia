@@ -3,18 +3,6 @@ require 'spec_helper'
 describe KatasController do
   include Devise::TestHelpers
 
-  describe "GET 'index'" do
-    it "should succede" do
-      get :index
-      response.should be_success
-    end
-    
-    it "should reder the index page" do
-      get :index
-      response.should render_template(:index)
-    end
-  end
-
   describe "GET 'show'" do
     before(:each) do
       @kata = Factory.create(:kata)

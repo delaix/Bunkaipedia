@@ -8,7 +8,7 @@
  <div class="styles">
    <ul class="flat">
      <% @styles.each do |style| %>
-       <li><%= link_to style.name, katas_path(:style_id => style.id) %></li>
+       <li><%= link_to style.name, style_path(style) %></li>
      <% end %>
    </ul>
  </div>

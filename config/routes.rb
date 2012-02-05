@@ -2,10 +2,10 @@ Bunkaipedia::Application.routes.draw do
 
   devise_for :users
 
-  resources :katas
+  resources :katas, :only => [:show, :new, :create, :edit]
   resources :bunkai, :only => [:show, :new, :create, :edit, :update]
   resources :maneuvers, :only => [:create, :update, :destroy]
-  resources :styles, :only => [:index]
+  resources :styles, :only => [:index, :show]
   resources :techniques, :only => [:create, :update, :destroy]
   
   get "pages/home"

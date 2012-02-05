@@ -9,8 +9,8 @@ class BunkaiController < ApplicationController
  
   def new
     if params[:kata_id]
-      @bunkai = Bunkai.new
       @kata = Kata.find(params[:kata_id])
+      @bunkai = @kata.bunkais.build()
     else
       redirect_to :back
     end
@@ -18,10 +18,7 @@ class BunkaiController < ApplicationController
 
 
   def create
-    kata_id = params[:kata_id].to_i
-    @kata = Kata.find(kata_id)
-    @bunkai = current_user.bunkais.create!(
-      :title => params[:title], :kata_id => kata_id)
+    @bunkai = current_user.bunkais.build(params[:bunkai])
     technique_ids = []
     params.each do |key, value|
       case key
@@ -32,8 +29,13 @@ class BunkaiController < ApplicationController
     if not technique_ids.empty?
       @bunkai.add_technique_ids *technique_ids
     end
-    @new_maneuver = Maneuver.new()
-    render :edit
+    @kata = @bunkai.kata
+    if @bunkai.save
+      @new_maneuver = Maneuver.new()
+      render :edit
+    else
+      render :new
+    end
   end
 
 

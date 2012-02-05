@@ -74,13 +74,13 @@ describe BunkaiController do
       end
       
       it "should render the edit page on success" do
-        post :create, :kata_id => @kata.id, :title => "test"
+        post :create, :bunkai => { :kata_id => @kata.id, :title => "test" }
         response.should render_template('edit')
       end
       
       it "should create a bunkai" do
         lambda do
-          post :create, :kata_id => @kata.id, :title => "test"
+          post :create, :bunkai => { :kata_id => @kata.id, :title => "test" }
         end.should change(Bunkai, :count).by(1)
       end
       
@@ -89,7 +89,7 @@ describe BunkaiController do
           :image => File.new("#{Rails.root}/spec/fixtures/images/test.png"))
         technique_2 = @kata.techniques.create(:description => "second",
           :image => File.new("#{Rails.root}/spec/fixtures/images/test.png"))
-        post :create, :kata_id => @kata.id, :title => "test", :technique_2 => technique_2.id,
+        post :create, :bunkai => { :kata_id => @kata.id, :title => "test" }, :technique_2 => technique_2.id,
           :technique_1 => technique_1.id
         Bunkai.last.techniques.should == [technique_2, technique_1]
       end

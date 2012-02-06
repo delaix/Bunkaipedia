@@ -19,3 +19,6 @@
 
 # Ignore 'uploaded' images
 /public/system/
+
+# Don't include s3 credentials.
+/config/s3.yml

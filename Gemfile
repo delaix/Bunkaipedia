@@ -1,19 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
-
 gem 'sqlite3'
-
 gem 'gravatar_image_tag'
 gem 'will_paginate'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
-
 gem 'devise'
-
 gem "paperclip", "~> 2.0"
-
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'aws-sdk'
 
 group :development do
   gem 'rspec-rails'

@@ -64,13 +64,13 @@ describe KatasController do
       it "should create a new kata" do
         lambda do
           kata = @style.katas.build(:name => "test")
-          post :create, :kata => { :name => kata.name, :style_id => kata.style_id }
+          post :create, :kata => { :name => kata.name, :style_id => @style.id }
         end.should change(Kata, :count).by(1)
       end
       
       it "should render the edit page on success" do
         kata = @style.katas.build(:name => "test")
-        post :create, :kata => { :name => kata.name, :style_id => kata.style_id }
+        post :create, :kata => { :name => kata.name, :style_id => @style.id }
         response.should render_template('edit')
       end
     end

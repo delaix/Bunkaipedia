@@ -19,6 +19,7 @@ class KatasController < ApplicationController
   def create
     @kata = Kata.new(params[:kata])
     if @kata.save
+      @new_technique = Technique.new(:kata_id => @kata.id)
       render :edit
     else
       params[:style_id] = @kata.style_id

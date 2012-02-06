@@ -13,7 +13,7 @@ module PagesHelper
       breadcrumb(object.style, trail)
       trail << [object.name, kata_path(object)]
     elsif object.is_a? Style
-      trail << [object.name, katas_path(:style_id => object.id)]
+      trail << [object.name, style_path(object)]
     else
       # No op.
     end

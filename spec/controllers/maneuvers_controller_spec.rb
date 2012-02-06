@@ -64,7 +64,7 @@ describe ManeuversController do
       
       describe "with wrong user" do
         before(:each) do
-          wrong_user = Factory(:user, :email => Factory.next(:email))
+          wrong_user = Factory(:user, :email => Factory.next(:email), :name => Factory.next(:name))
           sign_in wrong_user
         end
         
@@ -137,7 +137,7 @@ describe ManeuversController do
       
       describe "with the wrong user" do
         before(:each) do
-          sign_in Factory(:user, :email => Factory.next(:email))
+          sign_in Factory(:user, :email => Factory.next(:email), :name => Factory.next(:name))
         end
         
         it "should redirect to the bunkai page" do
@@ -191,7 +191,7 @@ describe ManeuversController do
       
       describe "with the wrong owner" do
         before(:each) do
-          sign_in Factory(:user, :email => Factory.next(:email))
+          sign_in Factory(:user, :email => Factory.next(:email), :name => Factory.next(:name))
         end
         
         it "should redirect to the bunkai page" do

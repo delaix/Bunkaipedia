@@ -21,6 +21,7 @@ Factory.define :maneuver do |maneuver|
 end
 
 Factory.define :user do |user|
+  user.name "Karate Do"
   user.email "karateka@bunkaipedia.com"
   user.password "karatedo"
   user.password_confirmation "karatedo"
@@ -32,4 +33,8 @@ end
 
 Factory.sequence :email do |n|
   "user-#{n}@bunkaipedia.com"
+end
+
+Factory.sequence :name do |n|
+  "User #{n}"
 end

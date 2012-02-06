@@ -12,7 +12,7 @@ end
 
 def make_users
   user = User.new(:email => "user@bunkaipedia.com", :password => "foobar", 
-    :password_confirmation => "foobar")
+    :password_confirmation => "foobar", :name => "User Bunkaipedia")
   user.save
 end
 

@@ -1,6 +1,6 @@
 Bunkaipedia::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   resources :katas, :only => [:show, :new, :create, :edit]
   resources :bunkai, :only => [:show, :new, :create, :edit, :update]

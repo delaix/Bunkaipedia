@@ -13,6 +13,8 @@ gem 'devise'
 
 gem "paperclip", "~> 2.0"
 
+gem "recaptcha", :require => "recaptcha/rails"
+
 group :development do
   gem 'rspec-rails'
   gem 'faker'

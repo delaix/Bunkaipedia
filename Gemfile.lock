@@ -84,6 +84,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    pg (0.12.2)
     polyglot (0.3.3)
     rack (1.4.0)
     rack-cache (1.1)
@@ -133,9 +134,6 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.5)
-    sqlite3-ruby (1.3.3)
-      sqlite3 (>= 1.3.3)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -166,13 +164,12 @@ DEPENDENCIES
   gravatar_image_tag
   jquery-rails
   paperclip (~> 2.0)
+  pg
   rails (= 3.2.0)
   recaptcha
   rspec
   rspec-rails
   sass-rails (~> 3.2.3)
-  sqlite3
-  sqlite3-ruby
   uglifier (>= 1.0.3)
   webrat
   will_paginate

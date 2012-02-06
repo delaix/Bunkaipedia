@@ -7,12 +7,11 @@ gem 'devise'
 gem "paperclip", "~> 2.0"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'aws-sdk'
+gem 'pg'
 
 group :development do
   gem 'rspec-rails'
   gem 'faker'
-  gem 'sqlite3'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 group :test do

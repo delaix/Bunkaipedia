@@ -2,7 +2,7 @@
 <div class="katas">
   <h2><%= @style.name %> Katas</h2>
   <ul class="flat">
-    <% @style.katas.each do |kata| %>
+    <% @katas.each do |kata| %>
       <li><%= link_to kata.name, kata_path(kata) %></li>
     <% end %>
   </ul>

@@ -5,5 +5,6 @@ class StylesController < ApplicationController
   
   def show
     @style = Style.find(params[:id])
+    @katas = @style.katas.order('name')
   end
 end

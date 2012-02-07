@@ -29,6 +29,7 @@ class TechniquesController < ApplicationController
 private    
   def render_katas_edit(kata, technique = Technique.new(:kata_id => kata.id))
     @kata = kata
+    @techniques = kata.techniques.order('id')
     @new_technique = technique
     render "katas/edit"
   end

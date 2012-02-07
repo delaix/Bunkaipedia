@@ -4,12 +4,15 @@ class BunkaiController < ApplicationController
 
   def show
     @bunkai = Bunkai.find(params[:id])
+    @techniques = @bunkai.techniques.order('id')
+    @maneuvers = @bunkai.maneuvers.order('id')
   end
 
  
   def new
     if params[:kata_id]
       @kata = Kata.find(params[:kata_id])
+      @techniques = @kata.techniques.order('id')
       @bunkai = @kata.bunkais.build()
     else
       redirect_to :back
@@ -30,10 +33,13 @@ class BunkaiController < ApplicationController
       @bunkai.add_technique_ids *technique_ids
     end
     @kata = @bunkai.kata
+    @maneuvers = @bunkai.maneuvers.order('id')
     if @bunkai.save
+      @techniques = @bunkai.techniques.order('id')
       @new_maneuver = Maneuver.new()
       render :edit
     else
+      @techniques = @kata.techniques.order('id')
       render :new
     end
   end
@@ -42,6 +48,8 @@ class BunkaiController < ApplicationController
   def edit
     @bunkai = Bunkai.find(params[:id])
     redirect_to :show, @bunkai.id if @bunkai.user != current_user #TODO Show errors.
+    @techniques = @bunkai.techniques.order('id')
+    @maneuvers = @bunkai.maneuvers.order('id')
     @new_maneuver = Maneuver.new()
   end
 end

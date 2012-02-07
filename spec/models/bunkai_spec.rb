@@ -25,7 +25,7 @@ describe Bunkai do
     before(:each) do
       @user = Factory(:user)
       @kata = Factory(:kata)
-      @attributes = @attributes.merge(:kata_id => @kata)
+      @attributes = @attributes.merge(:kata_id => @kata.id)
     end
     
     it "should refer to the proper user" do
@@ -33,7 +33,7 @@ describe Bunkai do
     end
     
     it "should refer to the correct kata" do
-      bunkai = @user.bunkais.build(@attributes)
+      bunkai = @user.bunkais.create!(@attributes)
       bunkai.kata.should == @kata
     end
     
@@ -50,7 +50,7 @@ describe Bunkai do
       technique_2 = Factory(:technique)
       bunkai.techniques << technique_1
       bunkai.techniques << technique_2
-      bunkai.techniques.should == [technique_1, technique_2]
+      bunkai.techniques.order('id').should == [technique_1, technique_2]
     end
     
     it "should validate its title" do

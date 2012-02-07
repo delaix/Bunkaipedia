@@ -3,11 +3,11 @@
   <h2><%= @bunkai.title %></h2>
   <span class="techniques">
     <ul class="flat">
-      <%= render @bunkai.techniques %>
+      <%= render @techniques %>
     </ul>
   </span>
   <span class="maneuvers">
-    <%= render @bunkai.maneuvers %>
+    <%= render @maneuvers %>
   </span>
   <% if current_user == @bunkai.user %>
   <nav>

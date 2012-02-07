@@ -6,7 +6,7 @@
       <%= render 'shared/error_messages', :object => form.object %>
       <%= form.hidden_field(:kata_id) %>
       <ul class="flat">
-        <% @kata.techniques.each do |technique| %>
+        <% @techniques.each do |technique| %>
           <li>
             <%= image_tag technique.image.url(:small), :alt => technique.description%>
             <%= check_box_tag "technique_#{technique.id}", technique.id %>

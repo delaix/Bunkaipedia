@@ -4,6 +4,7 @@ class KatasController < ApplicationController
 
   def show
     @kata = Kata.find(params[:id])
+    @techniques = @kata.techniques.order('id')
   end
   
   
@@ -30,6 +31,7 @@ class KatasController < ApplicationController
   
   def edit
     @kata = Kata.find(params[:id])
+    @techniques = @kata.techniques.order('id')
     @new_technique = Technique.new(:kata_id => params[:id])
   end
 end

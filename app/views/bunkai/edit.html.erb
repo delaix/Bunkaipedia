@@ -3,11 +3,11 @@
   <h2><%= @bunkai.title %></h2>
   <span class="techniques">
     <ul class="flat">
-      <%= render @bunkai.techniques %>
+      <%= render @techniques %>
     </ul>
   </span>
   <span class="maneuvers">
-    <% @bunkai.maneuvers.each do |maneuver| %>
+    <% @maneuvers.each do |maneuver| %>
       <div class="existing">
         <%= form_for maneuver, :html => { :multipart => true } do |form| %>
           <span class="delete">

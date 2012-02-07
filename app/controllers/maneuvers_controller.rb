@@ -48,6 +48,8 @@ private
   
   def render_bunkai_edit(bunkai, maneuver = Maneuver.new)
     @bunkai = bunkai
+    @techniques = bunkai.techniques.order('id')
+    @maneuvers = bunkai.maneuvers.order('id')
     @new_maneuver = maneuver
     render "bunkai/edit"
   end

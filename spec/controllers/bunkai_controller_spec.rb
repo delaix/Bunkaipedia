@@ -91,7 +91,8 @@ describe BunkaiController do
           :image => File.new("#{Rails.root}/spec/fixtures/images/test.png"))
         post :create, :bunkai => { :kata_id => @kata.id, :title => "test" }, :technique_2 => technique_2.id,
           :technique_1 => technique_1.id
-        Bunkai.last.techniques.should == [technique_2, technique_1]
+        Bunkai.last.techniques.order('id').should == 
+          [technique_1, technique_2]
       end
     end
   end

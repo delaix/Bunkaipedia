@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @styles = Style.all
+    @styles = Style.order('name')
   end
 end

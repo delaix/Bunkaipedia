@@ -5,6 +5,7 @@ class KatasController < ApplicationController
   def show
     @kata = Kata.find(params[:id])
     @techniques = @kata.techniques.order('id')
+    @bunkai = @kata.bunkais.order('created_at DESC')
   end
   
   

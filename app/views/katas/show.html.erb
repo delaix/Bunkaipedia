@@ -14,7 +14,7 @@
   </nav>
 </h3>
 <lu class="bunkai">
-  <% @kata.bunkais.each do |bunkai| %>
+  <% @bunkai.each do |bunkai| %>
     <li class="round">
       <%= gravatar_for bunkai.user, :size => 30 %>
       <%= link_to bunkai.title, bunkai_path(bunkai) %> 

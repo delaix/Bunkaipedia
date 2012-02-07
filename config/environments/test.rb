@@ -35,3 +35,6 @@ Bunkaipedia::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+  
+# Used to control usage of s3 storage. 
+PAPERCLIP_STORAGE_OPTIONS = {}

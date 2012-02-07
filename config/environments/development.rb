@@ -37,3 +37,14 @@ Bunkaipedia::Application.configure do
       
   Paperclip.options[:command_path] = "/usr/local/bin"
 end
+  
+# Used to control usage of s3 storage. 
+PAPERCLIP_STORAGE_OPTIONS =  {    
+  :storage => :s3,
+  :s3_credentials => {
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
+  },
+  :path => ":attachment/:id/:style/:filename",
+  :bucket => 'bunkaipedia'
+}

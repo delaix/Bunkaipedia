@@ -74,3 +74,31 @@
 .maneuvers textarea {
   vertical-align: top;
 }
+
+.bunkai tr > td {
+  padding-bottom: .1em;
+  padding-top: 0em;
+}
+
+.bunkai table {
+  padding: .25em;
+  margin-bottom: 0em
+}
+
+.bunkai td.avatar {
+  width: 30px;
+  vertical-align: center
+}
+
+.bunkai td.signature {
+  font-size: x-small;
+  vertical-align: bottom
+}
+
+.bunkai td.thumbs {
+  width: 160px
+}
+
+.bunkai td.title {
+  vertical-align: center;
+}

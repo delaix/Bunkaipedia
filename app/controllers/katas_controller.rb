@@ -5,7 +5,8 @@ class KatasController < ApplicationController
   def show
     @kata = Kata.find(params[:id])
     @techniques = @kata.techniques.order('id')
-    @bunkai = @kata.bunkai.order('created_at DESC')
+    @bunkai = @kata.bunkai.order('created_at DESC').paginate(
+      :page => params[:page], :per_page => 20)
   end
   
   

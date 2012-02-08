@@ -9,10 +9,12 @@
 <h3>Bunkai
   <nav>
     <% if user_signed_in? then %>
-      <%= link_to '+', new_bunkai_path(:kata_id => @kata.id), :class => "buttonlike" %>
+      <%= link_to 'New', new_bunkai_path(:kata_id => @kata.id), :class => "buttonlike small" %>
     <% end %>
   </nav>
 </h3>
 <lu class="bunkai">
+  <%= will_paginate @bunkai %>
   <%= render @bunkai %>
+  <%= will_paginate @bunkai %>
 <lu>

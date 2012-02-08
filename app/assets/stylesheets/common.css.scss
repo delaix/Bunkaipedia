@@ -97,3 +97,11 @@ nav ul li a:hover {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+
+
+/* tables */
+
+tbody tr:nth-child(even) td, tbody tr.even td {
+  background: inherit;
+}
+

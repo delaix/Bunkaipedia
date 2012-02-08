@@ -1,9 +1,14 @@
 <%= render 'shared/breadcrumb', :object => @kata %>
-<h1> Kata <%= @kata.name %></h1>
+<div>
+  <span style="float:right">
+    <%= render 'shared/show_hide', :show_hide_div => 'kata_techniques' %>
+  </span>
+  <h1> Kata <%= @kata.name %></h1>
+<div>
 <% if user_signed_in? then %>
   <%= link_to 'Edit', edit_kata_path(@kata) %>
 <% end %>
-<ul class="flat">
+<ul class="flat" id="kata_techniques" style="display: block">
   <% @techniques.each do |technique| %>
     <a href=<%= bunkai_index_path(:technique_id => technique.id) %>><%= render technique %></a>
   <% end %>

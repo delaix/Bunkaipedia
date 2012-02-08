@@ -3,7 +3,7 @@ Bunkaipedia::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   resources :katas, :only => [:show, :new, :create, :edit]
-  resources :bunkai, :only => [:show, :new, :create, :edit, :update]
+  resources :bunkai, :only => [:index, :show, :new, :create, :edit, :update]
   resources :maneuvers, :only => [:create, :update, :destroy]
   resources :styles, :only => [:index, :show]
   resources :techniques, :only => [:create, :update, :destroy]

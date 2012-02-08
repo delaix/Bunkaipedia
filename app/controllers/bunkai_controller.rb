@@ -1,7 +1,18 @@
 class BunkaiController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
 
+  def index
+    if params[:technique_id]
+      @technique = Technique.find(params[:technique_id])
+      @bunkai = @technique.bunkai.order('created_at DESC').paginate(
+        :page => params[:page], :per_page => 30)
+    else
+      @bunkai = Bunkai.all.paginate(:page => params[:page], :per_page => 30)
+    end
+  end
+  
+  
   def show
     @bunkai = Bunkai.find(params[:id])
     @techniques = @bunkai.techniques.order('id')

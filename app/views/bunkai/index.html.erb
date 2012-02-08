@@ -1,0 +1,10 @@
+<%= render 'shared/breadcrumb', :object => @technique.kata if @technique %>
+<h3>
+  <%= image_tag @technique.image.url(:small), :alt => @technique.description if @technique %>
+  Bunkai
+</h3>
+<lu class="bunkai">
+  <%= will_paginate @bunkai %>
+  <%= render @bunkai %>
+  <%= will_paginate @bunkai %>
+<lu>

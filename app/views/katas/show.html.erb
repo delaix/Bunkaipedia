@@ -4,7 +4,9 @@
   <%= link_to 'Edit', edit_kata_path(@kata) %>
 <% end %>
 <ul class="flat">
-  <%= render @techniques %>
+  <% @techniques.each do |technique| %>
+    <a href=<%= bunkai_index_path(:technique_id => technique.id) %>><%= render technique %></a>
+  <% end %>
 </ul>
 <h3>Bunkai
   <nav>

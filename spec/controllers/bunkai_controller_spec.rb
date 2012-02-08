@@ -3,6 +3,32 @@ require 'spec_helper'
 describe BunkaiController do
   render_views
   include Devise::TestHelpers
+  
+  describe "Get 'index'" do
+    before(:each) do
+      @user = Factory(:user)
+      @kata = Factory.create(:kata)
+      technique = Factory(:technique)
+      @kata.techniques << technique
+      @bunkai = @user.bunkai.create(:title => "a bunkai", :kata_id  => @kata)
+      @bunkai.techniques << technique
+    end
+    
+    it "should succede with no parameters" do
+      get :index
+      response.should be_success
+    end
+    
+    it "should render the index page" do
+      get :index
+      response.should render_template('index')
+    end
+    
+    it "should succede with a technique id given" do
+      get :index, :technique_id => @kata.techniques.first.id
+      response.should be_success
+    end
+  end
 
   describe "GET 'show'" do
     before(:each) do

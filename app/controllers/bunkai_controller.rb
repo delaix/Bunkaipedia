@@ -13,7 +13,7 @@ class BunkaiController < ApplicationController
     if params[:kata_id]
       @kata = Kata.find(params[:kata_id])
       @techniques = @kata.techniques.order('id')
-      @bunkai = @kata.bunkais.build()
+      @bunkai = @kata.bunkai.build()
     else
       redirect_to :back
     end
@@ -21,7 +21,7 @@ class BunkaiController < ApplicationController
 
 
   def create
-    @bunkai = current_user.bunkais.build(params[:bunkai])
+    @bunkai = current_user.bunkai.build(params[:bunkai])
     technique_ids = []
     params.each do |key, value|
       case key

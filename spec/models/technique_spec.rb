@@ -14,8 +14,8 @@ describe Technique do
     Technique.new(@attributes).should respond_to(:kata)
   end
   
-  it "should have bunkais" do
-    Technique.new(@attributes).should respond_to(:bunkais)
+  it "should have bunkai" do
+    Technique.new(@attributes).should respond_to(:bunkai)
   end
   
   describe "content" do

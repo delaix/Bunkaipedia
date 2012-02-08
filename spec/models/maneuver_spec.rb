@@ -19,7 +19,7 @@ describe Maneuver do
 
   describe 'content' do
     before(:each) do
-      @bunkai = Factory(:user).bunkais.create(:title => "whatever", :kata_id => 1)
+      @bunkai = Factory(:user).bunkai.create(:title => "whatever", :kata_id => 1)
     end
     
     it "should refer to the expected bunkai" do

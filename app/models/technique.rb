@@ -9,7 +9,7 @@ class Technique < ActiveRecord::Base
     }.merge(PAPERCLIP_STORAGE_OPTIONS)
  
   belongs_to :kata
-  has_and_belongs_to_many :bunkais
+  has_and_belongs_to_many :bunkai
    
   validates :kata_id, :presence => true
   validates :description, :presence => true, :length => { :maximum => 80 }

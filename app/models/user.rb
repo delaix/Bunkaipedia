@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   
-  has_many :bunkais
+  has_many :bunkai
   
   validates :name, :presence => true, :length => { :maximum => 64 }, :uniqueness => true
 end

@@ -15,7 +15,7 @@ describe ManeuversController do
       before(:each) do
         @kata = Factory(:kata)
         @user = Factory(:user)
-        @bunkai = @user.bunkais.create!(:kata_id => @kata, :title => "test")
+        @bunkai = @user.bunkai.create!(:kata_id => @kata, :title => "test")
         @attributes = { :actor => "defender", :description => "duck!" }
       end
       
@@ -94,7 +94,7 @@ describe ManeuversController do
       before(:each) do
         @kata = Factory(:kata)
         @user = Factory(:user)
-        @bunkai = @user.bunkais.create!(:kata_id => @kata, :title => "test")
+        @bunkai = @user.bunkai.create!(:kata_id => @kata, :title => "test")
         @attributes = { :actor => "defender", :description => "duck!" }
         @maneuver = @bunkai.maneuvers.create!(@attributes, :kata_id => @kata)
       end
@@ -167,7 +167,7 @@ describe ManeuversController do
       before(:each) do
         @kata = Factory(:kata)
         @user = Factory(:user)
-        @bunkai = @user.bunkais.create!(:kata_id => @kata, :title => "test")
+        @bunkai = @user.bunkai.create!(:kata_id => @kata, :title => "test")
         @attributes = { :actor => "defender", :description => "duck!" }
         @maneuver = @bunkai.maneuvers.create!(@attributes, :kata_id => @kata)
       end

@@ -8,7 +8,7 @@ describe BunkaiController do
     before(:each) do
       @user = Factory.create(:user)
       @kata = Factory.create(:kata)
-      @bunkai = @user.bunkais.create(:title => "a bunkai", :kata_id  => @kata)
+      @bunkai = @user.bunkai.create(:title => "a bunkai", :kata_id  => @kata)
     end
     
     it "should succede" do

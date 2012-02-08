@@ -13,8 +13,8 @@ describe Kata do
     Kata.new(@attributes).should respond_to(:techniques)
   end
   
-  it "should have bunkais" do
-    Kata.new(@attributes).should respond_to(:bunkais)
+  it "should have bunkai" do
+    Kata.new(@attributes).should respond_to(:bunkai)
   end
   
   describe "contents" do

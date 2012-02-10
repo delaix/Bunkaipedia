@@ -20,8 +20,8 @@
     <% end %>
   </nav>
 </h3>
-<lu class="bunkai">
-  <%= will_paginate @bunkai %>
+<%= will_paginate @bunkai %>
+<ul class="bunkai">
   <%= render @bunkai %>
-  <%= will_paginate @bunkai %>
-<lu>
+</ul>
+<%= will_paginate @bunkai %>

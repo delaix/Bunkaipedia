@@ -7,13 +7,21 @@
     <%= link_to "Sign up", new_user_registration_path, :class => 'buttonlike round' %>
   </div>
 <% end %>
-<p>
-  See the kata for:
-</p>
- <div class="styles">
-   <ul class="flat">
-     <% @styles.each do |style| %>
-       <li><%= link_to style.name, style_path(style) %></li>
-     <% end %>
-   </ul>
- </div>
+<h3>See the kata for:</h3>
+<div class="styles">
+  <ul class="flat">
+    <% @styles.each do |style| %>
+      <li><%= link_to style.name, style_path(style) %></li>
+    <% end %>
+  </ul>
+</div>
+<div>
+  <span style="float:right">
+    <%= render 'shared/show_hide', :show_hide_div => 'recent_bunkai', 
+      :switch_text_div => 'bunkai_show_hide' %>
+  </span>
+  <h3>Recent bunkai:</h3>
+</div>
+<ul class="bunkai" id="recent_bunkai" style="display:block">
+  <%= render @bunkai %>
+<ul>

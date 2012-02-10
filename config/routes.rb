@@ -10,6 +10,8 @@ Bunkaipedia::Application.routes.draw do
   
   get "pages/home"
   
+  match 'users/:id' => 'users#show', :as => :user
+  
   root :to => 'pages#home'
   
   # The priority is based upon order of creation:

@@ -1,0 +1,26 @@
+<% if current_user == @user %>
+  <%= link_to 'Edit', edit_user_registration_path, 
+  :class => "buttonlike round" %>
+<% end %>
+<table>
+  <tr>
+    <td style="width:590px">
+      <h3><%= @user.name %></h3>
+      <% if current_user == @user %>
+        <span id="email"><%= @user.email %></span><br />
+      <% end %>
+    </td>
+    <td>
+      <%= gravatar_for(@user, :size => 120) %><br />
+      <span class="small quiet"><%= @bunkai.size %> bunkai</span>
+    </td>
+  </tr>
+</table>
+<% unless @bunkai.empty? %>
+  <hr/>
+  <%= will_paginate @bunkai %>
+  <ul class="bunkai">
+    <%= render @bunkai %>
+  </ul>
+  <%= will_paginate @bunkai %>
+<% end %>

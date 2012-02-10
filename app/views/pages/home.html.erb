@@ -2,6 +2,11 @@
 <p>
   This is an interactive site dedicated to the study of kata in the martial arts.  
 </p>
+<% unless user_signed_in? %>
+  <div class="signup">
+    <%= link_to "Sign up", new_user_registration_path, :class => 'buttonlike round' %>
+  </div>
+<% end %>
 <p>
   See the kata for:
 </p>

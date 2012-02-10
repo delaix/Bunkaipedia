@@ -46,5 +46,5 @@ PAPERCLIP_STORAGE_OPTIONS =  {
     :secret_access_key => ENV['S3_SECRET']
   },
   :path => ":attachment/:id/:style/:filename",
-  :bucket => 'bunkaipedia'
+  :bucket => 'bunkaipedia_development'
 }

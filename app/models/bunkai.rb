@@ -3,7 +3,8 @@ class Bunkai < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :kata
-  has_many :maneuvers
+  has_many :maneuvers, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   has_and_belongs_to_many :techniques
   
   validates :title, :presence => true, :length => { :maximum => 80 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208144026) do
+ActiveRecord::Schema.define(:version => 20120211215131) do
 
   create_table "bunkai", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(:version => 20120208144026) do
 
   add_index "bunkai_techniques", ["bunkai_id"], :name => "index_bunkais_techniques_on_bunkai_id"
   add_index "bunkai_techniques", ["technique_id"], :name => "index_bunkais_techniques_on_technique_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.integer  "bunkai_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["bunkai_id"], :name => "index_comments_on_bunkai_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "kata", :force => true do |t|
     t.text     "name"

@@ -27,11 +27,23 @@ describe KatasController do
       end
     end
     
-    describe "while signed in" do
+    describe "while signed in as user" do
       before(:each) do
-        @user = Factory(:user)
+        sign_in Factory(:user)
+      end
+      
+      it "should redirect to the kata page" do
+        get :new
+        response.should redirect_to(root_path)
+      end
+    end
+    
+    describe "while signed in as an editor" do
+      before(:each) do
+        @editor = Factory(:user)
+        @editor.toggle!(:editor)
         @style = Factory(:style)
-        sign_in @user
+        sign_in @editor
       end
       
       it "should succede with a valid request" do
@@ -49,16 +61,30 @@ describe KatasController do
   describe "POST 'create'" do
     describe "while not signed" do
       it "should redirect to the sign-in page" do
-        get :new
+        post :create
         response.should redirect_to(new_user_session_path)
       end
     end
-
-    describe "while signed in" do
+    
+    describe "while signed in as user" do
       before(:each) do
-        @user = Factory(:user)
+        sign_in Factory(:user)
         @style = Factory(:style)
-        sign_in @user
+      end
+      
+      it "should redirect to the kata page" do
+        kata = @style.katas.build(:name => "test")
+        post :create, :kata => { :name => kata.name, :style_id => @style.id }
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "while signed in as an editor" do
+      before(:each) do
+        @editor = Factory(:user)
+        @editor.toggle!(:editor)
+        @style = Factory(:style)
+        sign_in @editor
       end
       
       it "should create a new kata" do
@@ -72,6 +98,46 @@ describe KatasController do
         kata = @style.katas.build(:name => "test")
         post :create, :kata => { :name => kata.name, :style_id => @style.id }
         response.should render_template('edit')
+      end
+    end
+  end
+ 
+  describe "GET 'edit'" do
+    describe "while not signed" do
+      it "should redirect to the sign-in page" do
+        get :edit
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe "while signed in as user" do
+      before(:each) do
+        sign_in Factory(:user)
+      end
+      
+      it "should redirect to the root page" do
+        get :edit
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "while signed in as an editor" do
+      before(:each) do
+        @editor = Factory(:user)
+        @editor.toggle!(:editor)
+        @style = Factory(:style)
+        @kata = @style.katas.create!(:name => "test")
+        sign_in @editor
+      end
+      
+      it "should succede" do
+        get :edit, :id => @kata.id
+        response.should be_success
+      end
+      
+      it "should render the edit template" do
+        get :edit, :id => @kata.id
+        response.should render_template(:edit)
       end
     end
   end

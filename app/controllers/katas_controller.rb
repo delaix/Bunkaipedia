@@ -1,5 +1,6 @@
 class KatasController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :editor_user, :except => [:index, :show]
 
 
   def show
@@ -35,5 +36,12 @@ class KatasController < ApplicationController
     @kata = Kata.find(params[:id])
     @techniques = @kata.techniques.order('id')
     @new_technique = Technique.new(:kata_id => params[:id])
+  end
+  
+  
+private
+  def editor_user
+    flash[:error] = "Permission denied"
+    redirect_to(root_path) unless current_user.editor?
   end
 end

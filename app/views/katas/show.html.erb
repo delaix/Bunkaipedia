@@ -5,7 +5,7 @@
   </span>
   <h1> Kata <%= @kata.name %></h1>
 <div>
-<% if user_signed_in? then %>
+<% if user_signed_in? and current_user.editor? then %>
   <%= link_to 'Edit', edit_kata_path(@kata) %>
 <% end %>
 <ul class="flat" id="kata_techniques" style="display: block">

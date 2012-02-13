@@ -17,6 +17,8 @@ class BunkaiController < ApplicationController
     @bunkai = Bunkai.find(params[:id])
     @techniques = @bunkai.techniques.order('id')
     @maneuvers = @bunkai.maneuvers.order('id')
+    @comments = @bunkai.comments.order('id')
+    @new_comment = @bunkai.comments.build(:user_id => current_user.id) if user_signed_in?
   end
 
  

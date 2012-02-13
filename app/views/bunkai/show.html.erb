@@ -1,17 +1,26 @@
 <%= render 'shared/breadcrumb', :object => @bunkai %>
 <span id="bunkai">
   <h2><%= @bunkai.title %></h2>
-  <span class="techniques">
+  <div class="techniques">
     <ul class="flat">
       <%= render @techniques %>
     </ul>
-  </span>
-  <span class="maneuvers">
+  </div>
+  <div class="maneuvers">
     <%= render @maneuvers %>
-  </span>
+  </div>
   <% if current_user == @bunkai.user %>
-  <nav>
-    <%= link_to "Edit", edit_bunkai_path(@bunkai), :style => "padding-bottom: 0px;"%>
-  </nav>
+    <nav>
+      <%= link_to "Edit", edit_bunkai_path(@bunkai), :style => "padding-bottom: 0px;"%>
+    </nav>
+  <% end %>
+  <hr/>
+  <ul class="comments">
+    <%= render @comments %>
+  </ul>
+  <% if user_signed_in? %>
+    <div class="comment">
+      <%= render :partial => 'shared/comment_form', :locals => { :comment => @new_comment } %>
+    </div>
   <% end %>
 </span>

@@ -1,5 +1,4 @@
 Bunkaipedia::Application.routes.draw do
-
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   resources :katas, :only => [:show, :new, :create, :edit]
@@ -7,6 +6,7 @@ Bunkaipedia::Application.routes.draw do
   resources :maneuvers, :only => [:create, :update, :destroy]
   resources :styles, :only => [:index, :show]
   resources :techniques, :only => [:create, :update, :destroy]
+  resources :comments, :only => [:create, :edit, :update]
   
   get "pages/home"
   

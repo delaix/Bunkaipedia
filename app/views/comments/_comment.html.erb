@@ -1,0 +1,10 @@
+<li class="quiet small">
+  <% if comment.user == current_user %>
+    <nav><%= link_to 'Edit', edit_comment_path(comment) %></nav>
+  <% end %>
+  <%= comment.text %>&nbsp;&mdash;&nbsp;<%= link_to comment.user.name, user_path(comment.user) %>
+  <span class="timestamp">
+    <% if comment.updated_at != comment.created_at then %>(edited)<% end %>
+    <%= time_ago_in_words(comment.updated_at) %> ago
+  <span>
+</li>

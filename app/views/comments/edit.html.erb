@@ -1,0 +1,6 @@
+<%= render 'shared/breadcrumb', :object => @comment.bunkai %>
+<h2>Edit comment</h2>
+<div class="comment">
+  <%= render :partial => 'shared/comment_form', 
+    :locals => { :comment => @comment, :button_text => 'Update' } %>
+</div>

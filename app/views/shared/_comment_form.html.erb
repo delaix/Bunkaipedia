@@ -1,0 +1,7 @@
+<%= form_for comment do |form| %>
+  <%= render 'shared/error_messages', :object => form.object %>
+  <%= form.hidden_field :bunkai_id %>
+  <%= form.hidden_field :user_id %>
+  <%= form.text_area :text, :rows => "5" %> <br/>
+  <%= form.submit button_text ||= 'Comment' %>
+<% end %>

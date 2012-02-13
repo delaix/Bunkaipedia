@@ -37,6 +37,15 @@ class KatasController < ApplicationController
     @techniques = @kata.techniques.order('id')
     @new_technique = Technique.new(:kata_id => params[:id])
   end
+
+
+  def update
+    @kata = Kata.find(params[:id])
+    flash[:success] = "Kata updated." if @kata.update_attributes(params[:kata])
+    @techniques = @kata.techniques.order('id')
+    @new_technique = Technique.new(:kata_id => params[:id])
+    render :edit
+  end
   
   
 private

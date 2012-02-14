@@ -122,4 +122,96 @@ describe BunkaiController do
       end
     end
   end
+  
+  describe "GET 'edit'" do
+    describe "while not signed" do
+      it "should redirect to the sign-in page" do
+        get :edit
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe "while signed in as bunkai owner" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        @bunkai = @user.bunkai.create!(:kata_id => @kata.id, :title => "test")
+        sign_in @user
+      end
+      
+      it "should succede" do
+        get :edit, :id => @bunkai.id
+        response.should be_success
+      end
+      
+      it "should render the edit template" do
+        get :edit, :id => @bunkai.id
+        response.should render_template(:edit)
+      end
+    end
+    
+    describe "while signed in as the wrong user" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        @bunkai = @user.bunkai.create!(:kata_id => @kata.id, :title => "test")
+        sign_in Factory(:user, :name => Factory.next(:name), :email => Factory.next(:email))
+      end
+      
+      it "should redirect to the bunkai show page" do
+        get :edit, :id => @bunkai.id
+        response.should redirect_to(bunkai_path(@bunkai)) 
+      end
+    end
+  end
+  
+  describe "POST 'update'" do
+    describe "while not signed" do
+      it "should redirect to the sign-in page" do
+        post :update
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe "while signed in as bunkai owner" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        @bunkai = @user.bunkai.create!(:kata_id => @kata.id, :title => "test")
+        sign_in @user
+        @attributes = { :title => "modified" }
+      end
+      
+      it "should succede" do
+        post :update, :id => @bunkai.id, :bunkai => @attributes
+        response.should be_success
+      end
+      
+      it "should render the edit template" do
+        post :update, :id => @bunkai.id, :bunkai => @attributes
+        response.should render_template(:edit)
+      end
+      
+      it "should change the bunkai" do
+        lambda do
+          post :update, :id => @bunkai.id, :bunkai => @attributes
+          @bunkai.reload
+        end.should change(@bunkai, :title)
+      end
+    end
+    
+    describe "while signed in as the wrong user" do
+      before(:each) do
+        @kata = Factory(:kata)
+        @user = Factory(:user)
+        @bunkai = @user.bunkai.create!(:kata_id => @kata.id, :title => "test")
+        sign_in Factory(:user, :name => Factory.next(:name), :email => Factory.next(:email))
+      end
+      
+      it "should redirect to the bunkai show page" do
+        post :update, :id => @bunkai.id, :bunkai => @attributes
+        response.should redirect_to(bunkai_path(@bunkai)) 
+      end
+    end
+  end
 end

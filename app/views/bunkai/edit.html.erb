@@ -1,6 +1,11 @@
 <%= render 'shared/breadcrumb', :object => @bunkai %>
 <span id="bunkai">
-  <h2><%= @bunkai.title %></h2>
+  <h2>
+    <%= form_for @bunkai do |form| %>
+      <%= form.text_field :title %>
+      <%= form.submit 'Update' %>
+    <% end %>
+  </h2>
   <span class="techniques">
     <ul class="flat">
       <%= render @techniques %>

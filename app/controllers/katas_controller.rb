@@ -51,7 +51,7 @@ class KatasController < ApplicationController
 private
   def editor_user
     unless current_user.editor?
-      flash[:error] = "Permission denied"
+      flash[:error] = "Permission denied."
       redirect_to(root_path)
     end
   end

@@ -1,5 +1,6 @@
 class BunkaiController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :bunkai_user, :only => [:edit, :update]
 
 
   def index
@@ -60,9 +61,28 @@ class BunkaiController < ApplicationController
 
   def edit
     @bunkai = Bunkai.find(params[:id])
-    redirect_to :show, @bunkai.id if @bunkai.user != current_user #TODO Show errors.
     @techniques = @bunkai.techniques.order('id')
     @maneuvers = @bunkai.maneuvers.order('id')
     @new_maneuver = Maneuver.new()
+  end
+  
+
+  def update
+    @bunkai = Bunkai.find(params[:id])
+    flash.now[:success] = "Bunkai updated." if @bunkai.update_attributes(params[:bunkai])
+    @techniques = @bunkai.techniques.order('id')
+    @maneuvers = @bunkai.maneuvers.order('id')
+    @new_maneuver = Maneuver.new()
+    render :edit
+  end
+
+
+private
+  def bunkai_user
+    bunkai = Bunkai.find(params[:id])
+    unless bunkai.user == current_user
+      flash[:error] = "Permission denied."
+      redirect_to bunkai_path(bunkai)
+    end
   end
 end
